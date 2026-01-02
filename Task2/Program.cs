@@ -36,8 +36,8 @@ namespace Task2
             //var isValid = false;
             while (true)
             {
-                Console.WriteLine("Введите желаемый тип рассылки (1/2):");
-                Console.WriteLine("1. Email  2. SMS");
+                Console.WriteLine("Введите желаемый тип рассылки (1/2):"); //3/4...push-уведомления и т.д
+                Console.WriteLine("1. Email  2. SMS"); //3/4...push-уведомления и т.д
                 string? choice = Convert.ToString(Console.ReadLine());
                 Console.WriteLine();
                 switch (choice)
