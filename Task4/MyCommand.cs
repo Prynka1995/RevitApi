@@ -63,7 +63,6 @@ public class MyCommand : IExternalCommand
         {
             t.Start();
 
-            int count = 0;
             foreach (Wall wall in walls)
             {
                 // Получаем длину
@@ -82,8 +81,6 @@ public class MyCommand : IExternalCommand
                 {
                     commentParam.Set("Самая длинная стена");
                 }
-
-                count++;
             }
 
             t.Commit();
