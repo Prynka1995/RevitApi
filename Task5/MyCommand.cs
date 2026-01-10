@@ -36,7 +36,6 @@ namespace Task5
                 string str = $"Общее количество элементов: {pickedRefs.Count} шт.\n";
                 foreach (KeyValuePair<string,int> item in dict)
                 {
-                    //TaskDialog.Show("Info", $"Категория: {item.Key}, количество: {item.Value} шт.\n");
                     str += $"{item.Key}: {item.Value} шт.\n";
                 }
                 TaskDialog.Show("info", str);
