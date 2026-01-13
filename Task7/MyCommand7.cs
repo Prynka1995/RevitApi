@@ -48,7 +48,7 @@ namespace Task7
             double edgeLengthM = UnitUtils.ConvertFromInternalUnits(edgeLength, DisplayUnitType.DUT_METERS);
 
             TaskDialog.Show("Статистика",
-            $"Суммарный объем: {volM3:F1} м3,\n\n" +
+            $"Суммарный объем: {volM3:F1} м3,\n\n"  +
             $"Суммарная площадь поверхностей всех Solid-ов.: {areaM2:F1} м2,\n\n" +
             $"Количество граней: {faceCount},\n\n" +
             $"Количество ребер: {edgeCount},\n\n" +

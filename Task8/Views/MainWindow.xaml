@@ -1,0 +1,232 @@
+﻿<Window x:Class="Task8.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Task8.Views" 
+        xmlns:viewmodels="clr-namespace:Task8.ViewModels" 
+       
+        mc:Ignorable="d"
+         Title="Анализатор геометрии стен" Height="550" Width="350"
+         WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Анализ геометрии стены"
+        Grid.Row="0"
+        HorizontalAlignment="Center"
+        FontWeight="Bold"
+        FontSize="16"
+        Margin="16"
+        />
+        <Button
+        Grid.Row="1"
+        Background="Blue"
+        Foreground ="White"
+        Command="{Binding CaclOpening}"
+        
+        Content="Выбрать стену"
+        Width="100"
+        />
+        <GroupBox Header="Информация о системе"
+        Grid.Row="2"
+       
+        Margin="16" 
+        Padding="15"
+        BorderThickness="1" 
+        BorderBrush="Gray">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Имя стены: "/>
+                <TextBlock Text = "{Binding OpeningInfo.FamilyName}"
+                Grid.Column="1"
+                Margin="0,0,0,5"
+                />
+
+                <TextBlock Text="Тип: "
+                Grid.Row="1"/>
+                <TextBlock Text = "{Binding OpeningInfo.FamilyType}"
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="0,0,0,5"
+/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Геометрические параметры"
+ Grid.Row="3"
+ Margin="16" 
+ Padding="15"
+ BorderThickness="1" 
+ BorderBrush="Gray">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text = "Длина:"
+                            Grid.Row="0"
+                            Margin="0,0,0,5"
+                  />
+                <TextBlock Text="{Binding OpeningInfo.Length}"
+                Grid.Column="1"
+                HorizontalAlignment="Center"
+                />
+                <TextBlock Text="мм"
+                Grid.Column="2"
+                />
+
+                <TextBlock Text = "Высота:"
+                            Grid.Row="1"
+                            Margin="0,0,0,5"
+                  />
+                <TextBlock Text="{Binding OpeningInfo.Height}"
+                Grid.Row="1"
+                Grid.Column="1"
+                                HorizontalAlignment="Center"
+
+                />
+                <TextBlock Text="мм"
+                Grid.Row="1"
+                Grid.Column="2"
+                />
+
+                <TextBlock Text = "Толщина:"
+                            Grid.Row="2"
+                            Margin="0,0,0,5"
+                  />
+                <TextBlock Text="{Binding OpeningInfo.Width}"
+                Grid.Row="2"
+                Grid.Column="1"
+                                HorizontalAlignment="Center"
+
+                />
+                <TextBlock Text="мм"
+                Grid.Row="2"
+                Grid.Column="2"
+                />
+
+                <TextBlock Text = "Объем:"
+                            Grid.Row="3"
+                            Margin="0,0,0,5"
+                  />
+                <TextBlock Text="{Binding OpeningInfo.Volume}"
+                Grid.Row="3"
+                Grid.Column="1"
+                                HorizontalAlignment="Center"
+
+                />
+                <TextBlock Text="мм3"
+                Grid.Row="3"
+                Grid.Column="2"
+                />
+
+                <TextBlock Text = "Площадь:"
+                            Grid.Row="4"
+                            Margin="0,0,0,5"
+                  />
+                <TextBlock Text="{Binding OpeningInfo.Area}"
+                Grid.Row="4"
+                Grid.Column="1"
+                                HorizontalAlignment="Center"
+
+                />
+                <TextBlock Text="мм2"
+                Grid.Row="4"
+                Grid.Column="2"
+                />
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Header="Контроль толщины"
+                    Grid.Row="4"
+                    Margin="16" 
+                    Padding="15"
+                    BorderThickness="1" 
+                    BorderBrush="Gray">
+            <GroupBox.Style>
+                <Style TargetType="GroupBox">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding OpeningInfo.IsCorrect}" Value="True">
+                            <Setter Property="Background" Value="#DFF4E0"></Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding OpeningInfo.IsCorrect}" Value="False">
+                            <Setter Property="Background" Value="#F9DDDD"></Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </GroupBox.Style>
+
+
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text = "Предел толщины:"
+        Grid.Row="0"
+        Margin="0,0,0,5"
+        />
+                <TextBox Text="{Binding WidthLimit}"
+                Grid.Column="1"
+                Width="120"
+                Margin="15,0,0,10"
+                />
+                <TextBlock Text="мм"
+                Grid.Column="2"
+                HorizontalAlignment="Right"
+                />
+
+                <TextBlock Text="Статус: "
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="2" Margin="33,0,59,0"
+                       
+                           
+        />
+                <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="82,0,0,0" Width="100" Grid.ColumnSpan="2" >
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding OpeningInfo.IsCorrect}" Value="True">
+                                    <Setter Property="Text" Value="Норма"></Setter>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding OpeningInfo.IsCorrect}" Value="False">
+                                    <Setter Property="Text" Value="Превышение"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>   
