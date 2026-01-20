@@ -6,14 +6,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Cmd - Копировать.cs" />
-    <Compile Remove="Services\SectionService - Копировать.cs" />
+    <Compile Remove="ViewModels\MainWindowViewModel.cs" />
+    <Compile Remove="Views\MainWindow.xaml.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+    <Page Remove="Views\MainWindow.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="1.1.1" />
-    <PackageReference Include="RevitTask" Version="3.0.0" />
   </ItemGroup>
 
 
@@ -26,6 +28,11 @@
       <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2019\RevitAPIUI.dll</HintPath>
       <Private>False</Private>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
+    <Folder Include="Views\" />
   </ItemGroup>
 
 </Project>
